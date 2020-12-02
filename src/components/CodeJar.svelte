@@ -22,8 +22,22 @@
     let container = null;
     let codejar = null;
 
+    function destroy() {
+        codejar.destroy();
+
+        const wrap = container.parentElement;
+        if (wrap.classList.contains("codejar-wrap")) {
+            const parent = wrap.parentElement;
+
+            container.style.padding = "";
+
+            parent.appendChild(container);
+            wrap.remove();
+        }
+    }
+
     function mount(element, highlightElement, withLineNumbers, syntax) {
-        if (codejar) codejar.destroy();
+        if (codejar) destroy();
 
         const highlight = withLineNumbers
             ? _wLN((element) => highlightElement(element, syntax))
