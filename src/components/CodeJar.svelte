@@ -1,5 +1,6 @@
 <script>
     import {CodeJar} from "codejar";
+    import {withLineNumbers as _wLN} from "codejar/linenumbers";
 
     let _class = "";
     export let style = undefined;
@@ -10,6 +11,7 @@
     export let indentOn = /{$/;
     export let spellcheck = false;
     export let tab = "\t";
+    export let withLineNumbers = false;
 
     export let highlightCode = null;
     export let highlightElement = (element, syntax) => void 0;
@@ -20,8 +22,14 @@
     let container = null;
     let codejar = null;
 
-    function mount(element) {
-        codejar = CodeJar(element, (element) => highlightElement(element, syntax), {
+    function mount(element, highlightElement, withLineNumbers, syntax) {
+        if (codejar) codejar.destroy();
+
+        const highlight = withLineNumbers
+            ? _wLN((element) => highlightElement(element, syntax))
+            : (element) => highlightElement(element, syntax);
+
+        codejar = CodeJar(element, highlight, {
             addClosing,
             indentOn,
             spellcheck,
@@ -33,7 +41,7 @@
         });
     }
 
-    $: if (container) mount(container);
+    $: if (container) mount(container, highlightElement, withLineNumbers, syntax);
     $: if (codejar) codejar.updateOptions({addClosing, indentOn, spellcheck, tab});
     $: if (codejar && codejar.toString() !== value) codejar.updateCode(value);
 </script>
@@ -42,4 +50,4 @@
 <pre class={_class} bind:this={container} {style}><code
         class={syntax ? `language-${syntax}` : ''}
         data-language={syntax}
-        >{#if codejar && highlightCode}{@html highlightCode(value, syntax)}{:else}{value}{/if}</code></pre>
+        >{#if !codejar && highlightCode}{@html highlightCode(value, syntax)}{:else}{value}{/if}</code></pre>
