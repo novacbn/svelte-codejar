@@ -1,0 +1,36 @@
+{
+  "imports": {
+    "/index.html": {
+      "entry": [
+        "/_dist_/index.js"
+      ],
+      "css": [
+        "/favicon.ico"
+      ],
+      "js": [
+        "/__snowpack__/env.js",
+        "/_dist_/Application.js",
+        "/_dist_/components/CodeEditor.css.proxy.js",
+        "/_dist_/components/CodeEditor.js",
+        "/_dist_/content/README.js",
+        "/_dist_/index.js",
+        "/_dist_/routes/$layout.css.proxy.js",
+        "/_dist_/routes/$layout.js",
+        "/_dist_/routes/demo.css.proxy.js",
+        "/_dist_/routes/demo.js",
+        "/_dist_/routes/index.css.proxy.js",
+        "/_dist_/routes/index.js",
+        "/_dist_/stores/hash.js",
+        "/extern/styles/chota.css.proxy.js",
+        "/web_modules/common/index-9ef63cc3.js",
+        "/web_modules/highlightjs/lib/core.js",
+        "/web_modules/highlightjs/lib/languages/javascript.js",
+        "/web_modules/highlightjs/styles/github.css.proxy.js",
+        "/web_modules/svelte-codejar.js",
+        "/web_modules/svelte/internal.js",
+        "/web_modules/svelte/store.js"
+      ]
+    }
+  },
+  "generated": {}
+}

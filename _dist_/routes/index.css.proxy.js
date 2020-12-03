@@ -1,0 +1,1 @@
+if(typeof document!="undefined"){const t="pre{padding:0}blockquote > p:last-child{margin-bottom:0}",e=document.createElement("style"),d=document.createTextNode(t);e.type="text/css",e.appendChild(d),document.head.appendChild(e)}

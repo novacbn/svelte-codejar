@@ -1,0 +1,1 @@
+import{readable as o}from"../../web_modules/svelte/store.js";export function hash(){return o(window.location.hash,n=>{function e(h){n(window.location.hash)}return n(window.location.hash),window.addEventListener("hashchange",e),()=>window.removeEventListener("hashchange",e)})}

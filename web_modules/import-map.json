@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "highlight.js/lib/core": "./highlightjs/lib/core.js",
+    "highlight.js/lib/languages/javascript": "./highlightjs/lib/languages/javascript.js",
+    "highlight.js/styles/github.css": "./highlightjs/styles/github.css",
+    "svelte-codejar": "./svelte-codejar.js",
+    "svelte/internal": "./svelte/internal.js",
+    "svelte/store": "./svelte/store.js"
+  }
+}

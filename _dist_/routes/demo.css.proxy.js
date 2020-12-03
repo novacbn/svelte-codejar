@@ -1,0 +1,1 @@
+if(typeof document!="undefined"){const t="div.svelte-u5363u{display:flex;align-items:center;justify-content:space-between}",e=document.createElement("style"),n=document.createTextNode(t);e.type="text/css",e.appendChild(n),document.head.appendChild(e)}
