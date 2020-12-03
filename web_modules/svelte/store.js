@@ -1,1 +1,65 @@
-import{n as b,s as p}from"../common/index-9ef63cc3.js";const i=[];function g(s,c){return{subscribe:d(s,c).subscribe}}function d(s,c=b){let r;const t=[];function u(e){if(p(s,e)&&(s=e,r)){const f=!i.length;for(let n=0;n<t.length;n+=1){const o=t[n];o[1](),i.push(o,s)}if(f){for(let n=0;n<i.length;n+=2)i[n][0](i[n+1]);i.length=0}}}function l(e){u(e(s))}function h(e,f=b){const n=[e,f];return t.push(n),t.length===1&&(r=c(u)||b),e(s),()=>{const o=t.indexOf(n);o!==-1&&t.splice(o,1),t.length===0&&(r(),r=null)}}return{set:u,update:l,subscribe:h}}export{g as readable};
+import { n as noop, s as safe_not_equal } from '../common/index-9ef63cc3.js';
+
+const subscriber_queue = [];
+/**
+ * Creates a `Readable` store that allows reading by subscription.
+ * @param value initial value
+ * @param {StartStopNotifier}start start and stop notifications for subscriptions
+ */
+function readable(value, start) {
+    return {
+        subscribe: writable(value, start).subscribe
+    };
+}
+/**
+ * Create a `Writable` store that allows both updating and reading by subscription.
+ * @param {*=}value initial value
+ * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+ */
+function writable(value, start = noop) {
+    let stop;
+    const subscribers = [];
+    function set(new_value) {
+        if (safe_not_equal(value, new_value)) {
+            value = new_value;
+            if (stop) { // store is ready
+                const run_queue = !subscriber_queue.length;
+                for (let i = 0; i < subscribers.length; i += 1) {
+                    const s = subscribers[i];
+                    s[1]();
+                    subscriber_queue.push(s, value);
+                }
+                if (run_queue) {
+                    for (let i = 0; i < subscriber_queue.length; i += 2) {
+                        subscriber_queue[i][0](subscriber_queue[i + 1]);
+                    }
+                    subscriber_queue.length = 0;
+                }
+            }
+        }
+    }
+    function update(fn) {
+        set(fn(value));
+    }
+    function subscribe(run, invalidate = noop) {
+        const subscriber = [run, invalidate];
+        subscribers.push(subscriber);
+        if (subscribers.length === 1) {
+            stop = start(set) || noop;
+        }
+        run(value);
+        return () => {
+            const index = subscribers.indexOf(subscriber);
+            if (index !== -1) {
+                subscribers.splice(index, 1);
+            }
+            if (subscribers.length === 0) {
+                stop();
+                stop = null;
+            }
+        };
+    }
+    return { set, update, subscribe };
+}
+
+export { readable };
