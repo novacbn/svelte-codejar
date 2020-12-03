@@ -1,8 +1,8 @@
 {
     "name": "svelte-codejar",
+    "version": "0.0.1",
     "description": "Svelte Binding for the embeddable code editor CodeJar",
     "author": "novacbn",
-    "version": "0.0.1",
     "main": "src/index.js",
     "svelte": "src/index.js",
     "global": "SvelteCodeJar",
@@ -16,10 +16,15 @@
         "dist",
         "src"
     ],
-    "devDependencies": {
-        "prettier": "^2.1.2"
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/novacbn/svelte-codejar"
     },
+    "scripts": {},
     "dependencies": {
         "codejar": "^3.2.2"
+    },
+    "devDependencies": {
+        "prettier": "^2.1.2"
     }
 }

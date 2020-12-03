@@ -1,5 +1,5 @@
-const highlight = require("remark-highlight.js");
 const gfm = require("remark-gfm");
+const highlight = require("remark-highlight.js");
 
 const {code_highlighted, code_inline} = require("./plugins/codeblock");
 
