@@ -82,7 +82,7 @@ See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io
 Open your terminal and install via `npm`:
 
 ```sh
-npm install git+https://github.com/novacbn/svelte-codejar#0.0.1
+npm install git+https://github.com/novacbn/svelte-codejar#0.0.2
 ```
 
 Install current in-development code:
