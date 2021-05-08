@@ -27,13 +27,17 @@ See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io
 <!--
     **NOTE**: Syntax highlighting is optional and must be provided by you. See the
     sample below on how to use it
+
+    **NOTE2**: When setting `CodeJar.tab`, if you're using escape characters such
+    as `\t`, you need encapsulate it as a raw string (see below). Otherwise the Svelte
+    compiler will escape the value when it parses your code
 -->
 
 <CodeJar
     addClosing={true}
     indentOn={/{$/}
     spellcheck={false}
-    tab="\t"
+    tab={"\t"}
 
     bind:value
     />
@@ -74,6 +78,46 @@ See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io
 
 <CodeJar syntax="javascript" {highlightCode} {highlightElement} bind:value />
 ```
+
+## FAQ
+
+### SvelteKit — `ReferenceError: window is not defined`
+
+When using the library with [SvelteKit](https://kit.svelte.dev) with SSR (serverside rendering) enabled you might get this error:
+
+```
+[vite] Error when evaluating SSR module /node_modules/codejar/codejar.js?v=4f67a3d5:
+ReferenceError: window is not defined
+```
+
+Nothing much can do about that, CodeJar [makes a `window` assignment](https://github.com/antonmedv/codejar/blob/b037e29b6565269a2f797e62f51966d77cdf3978/codejar.ts#L1) in its module scope. However you can do a workaround via [`onMount`](https://svelte.dev/docs#onMount) or other similar workflows:
+
+```svelte
+<script>
+    import {onMount} from "svelte-codejar";
+
+    export let value = "";
+
+    // **NOTE:** Since `onMount` is only called on the client, we can just
+    // make our import there. And assign to our Component's scope
+    let CodeJar;
+    onMount(async () => {
+        ({CodeJar} = await import("svelte-codejar"));
+    });
+</script>
+
+{#if CodeJar}
+    <CodeJar bind:value />
+{:else}
+    <!--
+        **NOTE:** Normally the `CodeJar` Svelte handles fall through for us, and
+        renders / syntax highlights without an editor during SSR / non-JS enabled clients
+    -->
+    <pre><code>{value}</code></pre>
+{/if}
+```
+
+Only downside being you have to manually syntax highlight your code in the `{:else}` block for SSR / non-JS enabled clients.
 
 ## Developer
 
