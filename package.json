@@ -1,6 +1,6 @@
 {
     "name": "svelte-codejar",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Svelte Binding for the embeddable code editor CodeJar",
     "author": "novacbn",
     "main": "src/index.js",
@@ -22,7 +22,7 @@
     },
     "scripts": {},
     "dependencies": {
-        "codejar": "^3.3.0"
+        "codejar": "^3.4.0"
     },
     "devDependencies": {
         "prettier": "^2.1.2"

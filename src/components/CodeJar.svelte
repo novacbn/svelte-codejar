@@ -58,10 +58,11 @@
     $: if (container) mount(container, highlightElement, withLineNumbers, syntax);
     $: if (codejar) codejar.updateOptions({addClosing, indentOn, spellcheck, tab});
     $: if (codejar && codejar.toString() !== value) codejar.updateCode(value);
+
 </script>
 
 <!-- prettier-ignore -->
-<pre class={_class} bind:this={container} {style}><code
+<pre class="{syntax ? `language-${syntax}` : ''} {_class}" bind:this={container} {style}><code
         class={syntax ? `language-${syntax}` : ''}
         data-language={syntax}
         >{#if !codejar && highlightCode}{@html highlightCode(value, syntax)}{:else}{value}{/if}</code></pre>
