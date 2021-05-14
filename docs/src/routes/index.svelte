@@ -1,15 +1,11 @@
 <script>
-    import {FRONTMATTER, HTML} from "../content/README.md";
+    import "prismjs/themes/prism-tomorrow.css";
+
+    import {html} from "../../../README.md";
+    import MainLayout from "./_MainLayout.svelte";
+
 </script>
 
-<style>
-    :global(pre) {
-        padding: 0;
-    }
-
-    :global(blockquote > p:last-child) {
-        margin-bottom: 0;
-    }
-</style>
-
-{@html HTML}
+<MainLayout>
+    {@html html}
+</MainLayout>
