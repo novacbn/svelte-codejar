@@ -1,4 +1,4 @@
-# svelte-codejar
+# `svelte-codejar`
 
 ## Description
 
@@ -6,13 +6,11 @@ Svelte Binding for the embeddable code editor CodeJar
 
 ## Demo
 
-See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io/svelte-codejar#/demo)
+See a demo at [novacbn.github.io/svelte-codejar/demo](https://novacbn.github.io/svelte-codejar/demo)
 
 ## Sample
 
-### Basic
-
-```svelte
+```html
 <script>
     import {CodeJar} from "svelte-codejar";
 
@@ -33,21 +31,16 @@ See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io
     compiler will escape the value when it parses your code
 -->
 
-<CodeJar
-    addClosing={true}
-    indentOn={/{$/}
-    spellcheck={false}
-    tab={"\t"}
-
-    bind:value
-    />
+<CodeJar addClosing={true} indentOn={/{$/} spellcheck={false} tab={"\t"} bind:value />
 ```
 
-### Syntax Highlighting
+## Syntax Highlighting
+
+### highlight.js
 
 > **NOTE**: The sample below uses [highlight.js](https://highlightjs.org/), see the link for more information.
 
-```svelte
+```html
 <script context="module">
     // We need to configure highlight.js for Javascript, and then alias the
     // exports to match the function signatures that `CodeJar` Component expects
@@ -58,11 +51,14 @@ See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io
 
     // `highlightElement` applies whenever the `CodeJar` Editor is active on the Browser,
     // and needs to apply syntax highlighting to the container `HTMLElement`
-    const highlightElement = (element, syntax) => hljs.highlightBlock(element);
+    const highlightElement = (element, syntax) => hljs.highlightElement(element);
 
     // `highlightCode` applies during server-side rendering or Browsers with scripting,
     // disabled where the `CodeJar` Editor would not be active
-    const highlightCode = (code, syntax) => hljs.highlight(syntax, code).value;
+    const highlightCode = (code, syntax) =>
+        hljs.highlight(code, {
+            language: syntax,
+        }).value;
 </script>
 
 <script>
@@ -75,6 +71,28 @@ See a demo at [novacbn.github.io/svelte-codejar#/demo](https://novacbn.github.io
     Now we pass `CodeJar` our syntax highlighting functions along with the
     language syntax used for highlighting
 -->
+
+<CodeJar syntax="javascript" {highlightCode} {highlightElement} bind:value />
+```
+
+### PrismJS
+
+> **NOTE**: The code is the same as above, but with [PrismJS](https://prismjs.com/) calls instead of highlight.js
+
+```html
+<script context="module">
+    import Prism from "prismjs";
+
+    const highlightElement = (element, syntax) => Prism.highlightElement(element);
+
+    const highlightCode = (code, syntax) => Prism.highlight(code, Prism.languages[syntax], syntax);
+</script>
+
+<script>
+    import {CodeJar} from "svelte-codejar";
+
+    export let value = `console.log("Hello World!");`;
+</script>
 
 <CodeJar syntax="javascript" {highlightCode} {highlightElement} bind:value />
 ```
@@ -92,7 +110,7 @@ ReferenceError: window is not defined
 
 Nothing much can do about that, CodeJar [makes a `window` assignment](https://github.com/antonmedv/codejar/blob/b037e29b6565269a2f797e62f51966d77cdf3978/codejar.ts#L1) in its module scope. However you can do a workaround via [`onMount`](https://svelte.dev/docs#onMount) or other similar workflows:
 
-```svelte
+```html
 <script>
     import {onMount} from "svelte-codejar";
 
@@ -107,13 +125,13 @@ Nothing much can do about that, CodeJar [makes a `window` assignment](https://gi
 </script>
 
 {#if CodeJar}
-    <CodeJar bind:value />
+<CodeJar bind:value />
 {:else}
-    <!--
-        **NOTE:** Normally the `CodeJar` Svelte handles fall through for us, and
-        renders / syntax highlights without an editor during SSR / non-JS enabled clients
-    -->
-    <pre><code>{value}</code></pre>
+<!--
+    **NOTE:** Normally the `CodeJar` Svelte handles fall through for us, and
+    renders / syntax highlights without an editor during SSR / non-JS enabled clients
+-->
+<pre><code>{value}</code></pre>
 {/if}
 ```
 
@@ -125,14 +143,14 @@ Only downside being you have to manually syntax highlight your code in the `{:el
 
 Open your terminal and install via `npm`:
 
-```sh
-npm install git+https://github.com/novacbn/svelte-codejar#0.0.2
+```bash
+npm install github:novacbn/svelte-codejar#0.0.3
 ```
 
 Install current in-development code:
 
-```sh
-npm install git+https://github.com/novacbn/svelte-codejar
+```bash
+npm install github:novacbn/svelte-codejar
 ```
 
 ### Properties
