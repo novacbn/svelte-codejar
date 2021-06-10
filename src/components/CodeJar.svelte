@@ -2,6 +2,8 @@
     import {CodeJar} from "codejar";
     import {withLineNumbers as _wLN} from "codejar/linenumbers";
 
+    export let element = null;
+
     let _class = "";
     export let style = undefined;
 
@@ -19,19 +21,18 @@
     export let syntax = undefined;
     export let value = "";
 
-    let container = null;
     let codejar = null;
 
     function destroy() {
         codejar.destroy();
 
-        const wrap = container.parentElement;
+        const wrap = element.parentElement;
         if (wrap.classList.contains("codejar-wrap")) {
             const parent = wrap.parentElement;
 
-            container.style.padding = "";
+            element.style.padding = "";
 
-            parent.appendChild(container);
+            parent.appendChild(element);
             wrap.remove();
         }
     }
@@ -55,14 +56,14 @@
         });
     }
 
-    $: if (container) mount(container, highlightElement, withLineNumbers, syntax);
+    $: if (element) mount(element, highlightElement, withLineNumbers, syntax);
     $: if (codejar) codejar.updateOptions({addClosing, indentOn, spellcheck, tab});
     $: if (codejar && codejar.toString() !== value) codejar.updateCode(value);
 
 </script>
 
 <!-- prettier-ignore -->
-<pre class="{syntax ? `language-${syntax}` : ''} {_class}" bind:this={container} {style}><code
+<pre class="{syntax ? `language-${syntax}` : ''} {_class}" bind:this={element} {style}><code
         class={syntax ? `language-${syntax}` : ''}
         data-language={syntax}
         >{#if !codejar && highlightCode}{@html highlightCode(value, syntax)}{:else}{value}{/if}</code></pre>

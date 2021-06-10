@@ -10,7 +10,7 @@ export default {
         target: "body",
 
         paths: {
-            base: "/svelte-codejar",
+            // base: "/svelte-codejar",
         },
 
         vite: () => {

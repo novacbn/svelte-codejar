@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.4 - 2021/06/09
+
+-   Added getting the `HTMLElement` to the `<pre>` element via `<CodeJar bind:element={XXX}>`
+    -   Works similarly to how you would do something like `<div bind:this={XXX}>`
+
 ## v0.0.3 - 2021/05/14
 
 -   Added `language-${SYNTAX}` class to `<pre>` for PrismJS
