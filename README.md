@@ -144,7 +144,7 @@ Only downside being you have to manually syntax highlight your code in the `{:el
 Open your terminal and install via `npm`:
 
 ```bash
-npm install github:novacbn/svelte-codejar#0.0.3
+npm install github:novacbn/svelte-codejar#0.0.4
 ```
 
 Install current in-development code:
