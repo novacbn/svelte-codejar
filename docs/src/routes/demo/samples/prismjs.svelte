@@ -1,10 +1,7 @@
 <script context="module">
     import Prism from "prismjs";
 
-    const highlightElement = (element, syntax) => Prism.highlightElement(element);
-
-    const highlightCode = (code, syntax) => Prism.highlight(code, Prism.languages[syntax], syntax);
-
+    const highlight = (code, syntax) => Prism.highlight(code, Prism.languages[syntax], syntax);
 </script>
 
 <script>
@@ -23,7 +20,6 @@
     let value = DEFAULT_CODE_SAMPLE;
 
     $: ({withLineNumbers = false} = $options);
-
 </script>
 
-<CodeJar {highlightCode} {highlightElement} {syntax} {withLineNumbers} bind:value />
+<CodeJar {highlight} {syntax} {value} {withLineNumbers} />

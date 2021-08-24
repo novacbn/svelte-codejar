@@ -3,7 +3,6 @@
         highlightjs: "highlightjs",
         prismjs: "prismjs",
     };
-
 </script>
 
 <script>
@@ -31,7 +30,6 @@
     }
 
     $: if (iframe_element) update_iframe({withLineNumbers});
-
 </script>
 
 <MainLayout>
@@ -89,6 +87,5 @@
             border-radius: 4px;
             box-shadow: 0 1px 3px var(--color-grey);
         }
-
     </style>
 </MainLayout>

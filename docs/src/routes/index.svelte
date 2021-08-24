@@ -3,7 +3,6 @@
 
     import {html} from "../../../README.md";
     import MainLayout from "./_MainLayout.svelte";
-
 </script>
 
 <MainLayout>
