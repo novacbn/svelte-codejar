@@ -14,18 +14,17 @@
         "preview:application": "svelte-kit preview --host 0.0.0.0"
     },
     "devDependencies": {
-        "@sveltejs/adapter-static": "^1.0.0-next.9",
-        "@sveltejs/kit": "^1.0.0-next.107",
-        "markdown-it": "^12.0.6",
-        "markdown-it-prism": "^2.1.6",
-        "vite": "^2.3.2",
+        "@sveltejs/adapter-static": "^1.0.0-next.17",
+        "@sveltejs/kit": "^1.0.0-next.156",
+        "markdown-it": "^12.2.0",
+        "markdown-it-prism": "^2.2.0",
         "vite-plugin-markdown": "^2.0.2"
     },
     "dependencies": {
+        "@novacbn/svelte-codejar": "file:../package",
         "chota": "^0.8.0",
-        "highlight.js": "^10.7.2",
+        "highlight.js": "^10.7.3",
         "prismjs": "^1.23.0",
-        "svelte": "^3.38.2",
-        "svelte-codejar": "file:.."
+        "svelte": "^3.42.3"
     }
 }

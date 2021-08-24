@@ -1,6 +1,6 @@
-import adapter from "@sveltejs/adapter-static";
 import markdownIt from "markdown-it";
 import markdownItPrism from "markdown-it-prism";
+import adapter from "@sveltejs/adapter-static";
 import {plugin as markdownPlugin, Mode as MarkdownMode} from "vite-plugin-markdown";
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -10,19 +10,18 @@ export default {
         target: "body",
 
         paths: {
+            // assets: "/svelte-codejar",
             // base: "/svelte-codejar",
         },
 
-        vite: () => {
-            /** @type {import('vite').UserConfig} */
-            return {
-                plugins: [
-                    markdownPlugin({
-                        markdownIt: markdownIt({html: true}).use(markdownItPrism),
-                        mode: [MarkdownMode.HTML],
-                    }),
-                ],
-            };
+        /** @type {import('vite').UserConfig} */
+        vite: {
+            plugins: [
+                markdownPlugin({
+                    markdownIt: markdownIt({html: true}).use(markdownItPrism),
+                    mode: [MarkdownMode.HTML],
+                }),
+            ],
         },
     },
 };

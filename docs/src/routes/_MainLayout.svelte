@@ -8,7 +8,6 @@
 
     import {base} from "$app/paths";
     import {page} from "$app/stores";
-
 </script>
 
 <nav class="nav">
@@ -54,5 +53,4 @@
         line-height: unset;
         letter-spacing: unset;
     }
-
 </style>

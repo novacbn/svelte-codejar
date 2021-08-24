@@ -3,7 +3,6 @@
         highlightjs: "highlightjs",
         prismjs: "prismjs",
     };
-
 </script>
 
 <script>
@@ -15,7 +14,6 @@
     let iframe_element;
 
     let current = DEMO_TABS.prismjs;
-
     let withLineNumbers = false;
 
     function update_iframe(options = {withLineNumbers}) {
@@ -31,7 +29,6 @@
     }
 
     $: if (iframe_element) update_iframe({withLineNumbers});
-
 </script>
 
 <MainLayout>
@@ -89,6 +86,5 @@
             border-radius: 4px;
             box-shadow: 0 1px 3px var(--color-grey);
         }
-
     </style>
 </MainLayout>

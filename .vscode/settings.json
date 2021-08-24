@@ -17,7 +17,7 @@
         "editor.formatOnSave": true
     },
 
-    "[json with comments]": {
+    "[jsonc]": {
         "editor.formatOnSave": true
     },
 
@@ -26,6 +26,14 @@
     },
 
     "[svelte]": {
+        "editor.formatOnSave": true
+    },
+
+    "[typescript]": {
+        "editor.formatOnSave": true
+    },
+
+    "[yaml]": {
         "editor.formatOnSave": true
     }
 }

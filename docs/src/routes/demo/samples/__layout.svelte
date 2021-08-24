@@ -19,9 +19,8 @@
         });
 
         window.parent.postMessage(null);
-        $store = (await import("svelte-codejar")).CodeJar;
+        $store = (await import("@novacbn/svelte-codejar")).CodeJar;
     });
-
 </script>
 
 {#if $store}
@@ -45,5 +44,4 @@
         min-height: 100vh;
         resize: none !important;
     }
-
 </style>
