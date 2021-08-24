@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## UNRELEASED
+
+-   Refactored into TypeScript, providing typing support.
+-   Fixed publish to NPM, import via `@novacbn/svelte-codejar`.
+-   Updated to mount CodeJar via Svelte Action.
+
 ## v0.0.4 - 2021/06/09
 
 -   Added getting the `HTMLElement` to the `<pre>` element via `<CodeJar bind:element={XXX}>`

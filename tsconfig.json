@@ -1,0 +1,16 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+    "compilerOptions": {
+        "module": "ES2020",
+        "target": "ES2019",
+        "strict": true,
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "typeRoots": ["node_modules/@types"]
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules/*", "docs/*", "package/*"]
+}

@@ -1,11 +1,13 @@
 {
-    "name": "svelte-codejar",
+    "name": "@novacbn/svelte-codejar",
     "version": "0.0.4",
     "description": "Svelte Binding for the embeddable code editor CodeJar",
     "author": "novacbn",
-    "main": "src/index.js",
-    "svelte": "src/index.js",
-    "global": "SvelteCodeJar",
+    "license": "MIT",
+    "type": "module",
+    "main": "index.js",
+    "svelte": "index.js",
+    "types": "index.d.ts",
     "keywords": [
         "codejar",
         "code-editor",
@@ -13,18 +15,43 @@
         "svelte-components"
     ],
     "files": [
-        "dist",
-        "src"
+        "actions",
+        "components",
+        "types",
+        "CHANGELOG.md",
+        "LICENSE",
+        "README.md",
+        "index.js",
+        "index.d.ts"
     ],
     "repository": {
         "type": "git",
         "url": "https://github.com/novacbn/svelte-codejar"
     },
-    "scripts": {},
+    "scripts": {
+        "format": "prettier --config .prettierrc --write ./",
+        "lint": "npm run lint:format",
+        "lint:format": "prettier --config .prettierrc --check ./",
+        "package": "npm run lint && npm run test && npm run package:lib",
+        "package:lib": "svelte-kit package",
+        "postversion": "git push && git push --tags && npm run release",
+        "release": "npm run package && npm run release:publish",
+        "release:publish": "npm publish ./package",
+        "test": "npm run test:types && npm run test:svelte",
+        "test:svelte": "svelte-check --tsconfig ./tsconfig.json",
+        "test:types": "tsc --noEmit"
+    },
     "dependencies": {
-        "codejar": "^3.4.0"
+        "codejar": "^3.5.0",
+        "svelte": "^3.42.3"
     },
     "devDependencies": {
-        "prettier": "^2.1.2"
+        "@sveltejs/kit": "^1.0.0-next.156",
+        "@tsconfig/svelte": "^2.0.1",
+        "prettier": "^2.1.2",
+        "svelte-check": "^2.2.5",
+        "svelte-preprocess": "^4.8.0",
+        "svelte2tsx": "^0.4.5",
+        "typescript": "^4.3.5"
     }
 }

@@ -1,5 +1,6 @@
 /node_modules/
+/package/
 
-/docs/.svelte-kit
+/docs/.svelte-kit/
 /docs/build/
 /docs/node_modules/
