@@ -14,7 +14,6 @@
     let iframe_element;
 
     let current = DEMO_TABS.prismjs;
-
     let withLineNumbers = false;
 
     function update_iframe(options = {withLineNumbers}) {

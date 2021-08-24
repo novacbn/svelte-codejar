@@ -16,10 +16,13 @@
 
     const CodeJar = $store;
 
-    let syntax = DEFAULT_CODE_SYNTAX;
-    let value = DEFAULT_CODE_SAMPLE;
-
     $: ({withLineNumbers = false} = $options);
 </script>
 
-<CodeJar {highlight} {syntax} {value} {withLineNumbers} />
+<CodeJar
+    syntax={DEFAULT_CODE_SYNTAX}
+    value={DEFAULT_CODE_SAMPLE}
+    {highlight}
+    {withLineNumbers}
+    catchTab
+/>
