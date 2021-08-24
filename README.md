@@ -12,7 +12,7 @@ See a demo at [novacbn.github.io/svelte-codejar/demo](https://novacbn.github.io/
 
 ```html
 <script>
-    import {CodeJar} from "svelte-codejar";
+    import {CodeJar} from "@novacbn/svelte-codejar";
 
     export let value = `console.log("Hello World!");`;
 </script>
@@ -49,30 +49,28 @@ See a demo at [novacbn.github.io/svelte-codejar/demo](https://novacbn.github.io/
 
     hljs.registerLanguage("javascript", javascript);
 
-    // `highlightElement` applies whenever the `CodeJar` Editor is active on the Browser,
-    // and needs to apply syntax highlighting to the container `HTMLElement`
-    const highlightElement = (element, syntax) => hljs.highlightElement(element);
-
-    // `highlightCode` applies during server-side rendering or Browsers with scripting,
-    // disabled where the `CodeJar` Editor would not be active
-    const highlightCode = (code, syntax) =>
+    // `highlight` takes the input code and returns the highlighted HTML markup
+    const highlight = (code, syntax) =>
         hljs.highlight(code, {
             language: syntax,
         }).value;
 </script>
 
 <script>
-    import {CodeJar} from "svelte-codejar";
+    import {CodeJar} from "@novacbn/svelte-codejar";
 
-    export let value = `console.log("Hello World!");`;
+    let value = `console.log("Hello World!");`;
 </script>
 
 <!--
     Now we pass `CodeJar` our syntax highlighting functions along with the
     language syntax used for highlighting
+
+    We also need to pass the `hljs` class so highlight.js knows which element
+    to style
 -->
 
-<CodeJar syntax="javascript" {highlightCode} {highlightElement} bind:value />
+<CodeJar class="hljs" syntax="javascript" {highlight} {value} />
 ```
 
 ### PrismJS
@@ -83,18 +81,16 @@ See a demo at [novacbn.github.io/svelte-codejar/demo](https://novacbn.github.io/
 <script context="module">
     import Prism from "prismjs";
 
-    const highlightElement = (element, syntax) => Prism.highlightElement(element);
-
-    const highlightCode = (code, syntax) => Prism.highlight(code, Prism.languages[syntax], syntax);
+    const highlight = (code, syntax) => Prism.highlight(code, Prism.languages[syntax], syntax);
 </script>
 
 <script>
-    import {CodeJar} from "svelte-codejar";
+    import {CodeJar} from "@novacbn/svelte-codejar";
 
-    export let value = `console.log("Hello World!");`;
+    let value = `console.log("Hello World!");`;
 </script>
 
-<CodeJar syntax="javascript" {highlightCode} {highlightElement} bind:value />
+<CodeJar syntax="javascript" {highlight} {value} />
 ```
 
 ## FAQ
@@ -112,7 +108,7 @@ Nothing much can do about that, CodeJar [makes a `window` assignment](https://gi
 
 ```html
 <script>
-    import {onMount} from "svelte-codejar";
+    import {onMount} from "@novacbn/svelte-codejar";
 
     export let value = "";
 
@@ -120,7 +116,7 @@ Nothing much can do about that, CodeJar [makes a `window` assignment](https://gi
     // make our import there. And assign to our Component's scope
     let CodeJar;
     onMount(async () => {
-        ({CodeJar} = await import("svelte-codejar"));
+        ({CodeJar} = await import("@novacbn/svelte-codejar"));
     });
 </script>
 
@@ -144,29 +140,22 @@ Only downside being you have to manually syntax highlight your code in the `{:el
 Open your terminal and install via `npm`:
 
 ```bash
-npm install github:novacbn/svelte-codejar#0.0.4
-```
-
-Install current in-development code:
-
-```bash
-npm install github:novacbn/svelte-codejar
+npm install @novacbn/svelte-codejar
 ```
 
 ### Properties
 
-| Name             | Typing                                           | Default                    | Description                                                                                                          |
-| ---------------- | ------------------------------------------------ | -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| addClosing       | `boolean`                                        | `true`                     | Sets whether the Editor automatically adds closing delimiters, like brackets, quotes, etc...                         |
-| indentOn         | `RegExp`                                         | `/{$/`                     | Represents what expression is used to detect when the Editor needs to auto indent with the configured tab characters |
-| spellcheck       | `boolean`                                        | `false`                    | Sets whether to enable the Browser's spellcheck or not                                                               |
-| tab              | `string`                                         | `\t`                       | Sets the characters inserted whenever the end-user pressed the tab key                                               |
-| highlightCode    | `(code: string, syntax: string) => string`       | `null`                     | Whenever `CodeJar` is used in SSR / disabled Javascript, this callback is called to render highlighted HTML markup   |
-| highlightElement | `(element: HTMLElement, syntax: string) => void` | `(code, syntax) => void 0` | Whenever `CodeJar` has new input, this callback is called to highlight the `<code>` element                          |
-| syntax           | `string`                                         | `undefined`                | Sets the current language mode of the Editor                                                                         |
-| value            | `string`                                         | `""`                       | Sets the current text of the Editor                                                                                  |
-| class            | `string`                                         | `""`                       | Applies `class=""` to the `<pre>` container element                                                                  |
-| style            | `string`                                         | `undefined`                | Applies `style=""` to the `<pre>` container element                                                                  |
+| Name       | Typing                                      | Default     | Description                                                                                                          |
+| ---------- | ------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------- |
+| addClosing | `boolean`                                   | `true`      | Sets whether the Editor automatically adds closing delimiters, like brackets, quotes, etc...                         |
+| indentOn   | `RegExp`                                    | `/{$/`      | Represents what expression is used to detect when the Editor needs to auto indent with the configured tab characters |
+| spellcheck | `boolean`                                   | `false`     | Sets whether to enable the Browser's spellcheck or not                                                               |
+| tab        | `string`                                    | `\t`        | Sets the characters inserted whenever the end-user pressed the tab key                                               |
+| highlight  | `(code: string, syntax?: string) => string` | `null`      | Callback is called to highlight the current code and return the rendered HTML markup                                 |
+| syntax     | `string`                                    | `undefined` | Sets the current language mode of the Editor                                                                         |
+| value      | `string`                                    | `""`        | Sets the current text of the Editor                                                                                  |
+| class      | `string`                                    | `""`        | Applies `class=""` to the `<pre>` container element                                                                  |
+| style      | `string`                                    | `undefined` | Applies `style=""` to the `<pre>` container element                                                                  |
 
 ### API
 
