@@ -26,13 +26,13 @@
 
     export {_class as class};
 
-    export let addClosing: $$Props["addClosing"] = undefined;
-    export let catchTab: $$Props["catchTab"] = undefined;
-    export let history: $$Props["history"] = undefined;
-    export let indentOn: $$Props["indentOn"] = undefined;
-    export let preserveIdent: $$Props["preserveIdent"] = undefined;
-    export let spellcheck: $$Props["spellcheck"] = undefined;
-    export let tab: $$Props["tab"] = undefined;
+    export let addClosing: $$Props["addClosing"] = true;
+    export let catchTab: $$Props["catchTab"] = true;
+    export let history: $$Props["history"] = true;
+    export let indentOn: $$Props["indentOn"] = /{$/;
+    export let preserveIdent: $$Props["preserveIdent"] = true;
+    export let spellcheck: $$Props["spellcheck"] = false;
+    export let tab: $$Props["tab"] = "\t";
 
     export let withLineNumbers: $$Props["withLineNumbers"] = undefined;
 
@@ -49,7 +49,7 @@
 <!-- prettier-ignore -->
 <pre
     bind:this={element}
-    class="{syntax ? `language-${syntax}` : ''} {_class}"
+    class="{syntax ? `language-${syntax}` : ''} {_class ?? ''}"
     style={style ? style : ""}
     use:codejar={{
         addClosing,
@@ -64,4 +64,4 @@
         tab,
         value,
         withLineNumbers
-    }}><code class={syntax ? `language-${syntax}` : ''}>{highlight ? highlight(value, syntax) : value}</code></pre>
+    }}><code class={syntax ? `language-${syntax}` : ''}>{@html highlight ? highlight(value, syntax) : value}</code></pre>

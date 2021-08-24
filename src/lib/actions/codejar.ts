@@ -33,6 +33,19 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
 
     let jar = CodeJar(element, wrap_highlight(highlight), extended_options);
 
+    function destroy() {
+        jar.destroy();
+
+        const wrap = element.parentElement as HTMLDivElement;
+        if (wrap.classList.contains("codejar-wrap")) {
+            const parent = wrap.parentElement as HTMLElement;
+            element.style.padding = "";
+
+            parent.appendChild(element);
+            wrap.remove();
+        }
+    }
+
     function on_input(event: Event): void {
         if (onUpdate) onUpdate(jar.toString());
     }
@@ -40,7 +53,7 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
     function wrap_highlight(highlight?: IHighlightCode): IHighlightElement {
         const _highlight = highlight
             ? (element: HTMLElement) => {
-                  element.innerHTML = highlight(jar.toString(), syntax);
+                  element.innerHTML = highlight(element.textContent ?? "", syntax);
               }
             : (element: HTMLElement) => void 0;
 
@@ -50,7 +63,7 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
     element.addEventListener("input", on_input);
     return {
         destroy() {
-            jar.destroy();
+            destroy();
             element.removeEventListener("input", on_input);
         },
 
@@ -65,7 +78,7 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
             } = new_options);
 
             if (options.highlight !== highlight || options.withLineNumbers !== withLineNumbers) {
-                jar.destroy();
+                destroy();
                 jar = CodeJar(element, wrap_highlight(highlight), options);
             } else jar.updateOptions(extended_options);
 
