@@ -16,10 +16,11 @@
 		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/preload-helper-1abccfe7.js">
 		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/paths-28a87002.js">
 		<link rel="modulepreload" href="/svelte-codejar/_app/layout.svelte-c370a4cd.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/pages/demo/index.svelte-c3920707.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/_MainLayout-4225f935.js">
+		<link rel="modulepreload" href="/svelte-codejar/_app/pages/demo/samples/__layout.svelte-9b302f55.js">
+		<link rel="modulepreload" href="/svelte-codejar/_app/pages/demo/samples/shiki.svelte-273d5c57.js">
+		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/_sample-88794a75.js">
 		<link rel="stylesheet" href="/svelte-codejar/_app/assets/start-61d1577b.css">
-		<link rel="stylesheet" href="/svelte-codejar/_app/assets/_MainLayout-1164a5e5.css">
+		<link rel="stylesheet" href="/svelte-codejar/_app/assets/pages/demo/samples/__layout.svelte-30b65fe4.css">
 
 		<script type="module">
 			import { start } from "/svelte-codejar/_app/start-44178ceb.js";
@@ -36,11 +37,12 @@
 					error: null,
 					nodes: [
 						import("/svelte-codejar/_app/layout.svelte-c370a4cd.js"),
-						import("/svelte-codejar/_app/pages/demo/index.svelte-c3920707.js")
+						import("/svelte-codejar/_app/pages/demo/samples/__layout.svelte-9b302f55.js"),
+						import("/svelte-codejar/_app/pages/demo/samples/shiki.svelte-273d5c57.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
-						path: "/demo",
+						path: "/demo/samples/shiki",
 						query: new URLSearchParams(""),
 						params: {}
 					}
@@ -57,27 +59,7 @@
 
 
 
-<nav class="nav"><div class="nav-left"><a href="/svelte-codejar/">README</a>
-        <a href="/svelte-codejar/demo" class="active">Demo</a></div>
-
-    <div class="nav-center"><a class="brand" href="/svelte-codejar/"><code>svelte-codejar</code></a></div>
-
-    <div class="nav-right"><a href="https://github.com/novacbn/svelte-codejar" target="_blank" rel="noopener noreferrer">GitHub
-        </a></div></nav>
-
-<hr>
-
-<div class="container"><div class="card bg-error text-white"><p>Your client currently does not support Javascript, or is otherwise disabled.</p></div>
-
-    <style>iframe {
-            width: 100%;
-            height: 40ex;
-
-            border-radius: 4px;
-            box-shadow: 0 1px 3px var(--color-grey);
-        }
-    </style>
-</div>
+<h2>Importing editor...</h2>
 
 
 

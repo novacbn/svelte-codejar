@@ -1,72 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-
-        <link rel="icon" href="/favicon.ico" />
-
-        
-
-		
-
-		<link rel="modulepreload" href="/svelte-codejar/_app/start-44178ceb.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/vendor-c89e8ae1.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/preload-helper-1abccfe7.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/paths-28a87002.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/layout.svelte-c370a4cd.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/pages/index.svelte-e3523a3c.js">
-		<link rel="modulepreload" href="/svelte-codejar/_app/chunks/_MainLayout-4225f935.js">
-		<link rel="stylesheet" href="/svelte-codejar/_app/assets/start-61d1577b.css">
-		<link rel="stylesheet" href="/svelte-codejar/_app/assets/prism-tomorrow-cb112da1.css">
-		<link rel="stylesheet" href="/svelte-codejar/_app/assets/_MainLayout-1164a5e5.css">
-
-		<script type="module">
-			import { start } from "/svelte-codejar/_app/start-44178ceb.js";
-			start({
-				target: document.querySelector("body"),
-				paths: {"base":"/svelte-codejar","assets":""},
-				session: {},
-				host: location.host,
-				route: true,
-				spa: false,
-				trailing_slash: "never",
-				hydrate: {
-					status: 200,
-					error: null,
-					nodes: [
-						import("/svelte-codejar/_app/layout.svelte-c370a4cd.js"),
-						import("/svelte-codejar/_app/pages/index.svelte-e3523a3c.js")
-					],
-					page: {
-						host: location.host, // TODO this is redundant
-						path: "/",
-						query: new URLSearchParams(""),
-						params: {}
-					}
-				}
-			});
-		</script>
-
-        <title>svelte-codejar</title>
-    </head>
-
-    <body>
-        
-
-
-<nav class="nav"><div class="nav-left"><a href="/svelte-codejar/" class="active">README</a>
-        <a href="/svelte-codejar/demo">Demo</a></div>
-
-    <div class="nav-center"><a class="brand" href="/svelte-codejar/"><code>svelte-codejar</code></a></div>
-
-    <div class="nav-right"><a href="https://github.com/novacbn/svelte-codejar" target="_blank" rel="noopener noreferrer">GitHub
-        </a></div></nav>
-
-<hr>
-
-<div class="container"><!-- HTML_TAG_START --><h1><code>svelte-codejar</code></h1>
+import{S as c,i as l,s as i,j as u,m as r,o as d,x as k,u as h,v as g,J as m,l as p,K as v,f,I as y,d as w}from"../chunks/vendor-c89e8ae1.js";/* empty css                               */import{M as b}from"../chunks/_MainLayout-4225f935.js";import"../chunks/paths-28a87002.js";const j=`<h1><code>svelte-codejar</code></h1>
 <h2>Description</h2>
 <p>Svelte Binding for the embeddable code editor CodeJar</p>
 <h2>Demo</h2>
@@ -75,11 +7,11 @@
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span>CodeJar<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@novacbn/svelte-codejar"</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">console.log("Hello World!");</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">console.log("Hello World!");</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
 <span class="token comment">&lt;!--
-    `CodeJar` options with their defaults
+    \`CodeJar\` options with their defaults
     See more information at: https://github.com/antonmedv/codejar#getting-started
 --></span>
 
@@ -87,12 +19,12 @@
     **NOTE**: Syntax highlighting is optional and must be provided by you. See the
     sample below on how to use it
 
-    **NOTE2**: When setting `CodeJar.tab`, if you're using escape characters such
-    as `\t`, you need encapsulate it as a raw string (see below). Otherwise the Svelte
+    **NOTE2**: When setting \`CodeJar.tab\`, if you're using escape characters such
+    as \`\\t\`, you need encapsulate it as a raw string (see below). Otherwise the Svelte
     compiler will escape the value when it parses your code
 --></span>
 
-&lt;CodeJar addClosing={true} indentOn={/{$/} spellcheck={false} tab={"\t"} bind:value />
+&lt;CodeJar addClosing={true} indentOn={/{$/} spellcheck={false} tab={"\\t"} bind:value />
 </code></pre>
 <h2>Syntax Highlighting</h2>
 <h3>highlight.js</h3>
@@ -101,13 +33,13 @@
 </blockquote>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">context</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
     <span class="token comment">// We need to configure highlight.js for Javascript, and then alias the</span>
-    <span class="token comment">// exports to match the function signatures that `CodeJar` Component expects</span>
+    <span class="token comment">// exports to match the function signatures that \`CodeJar\` Component expects</span>
     <span class="token keyword">import</span> hljs <span class="token keyword">from</span> <span class="token string">"highlight.js/lib/core"</span><span class="token punctuation">;</span>
     <span class="token keyword">import</span> javascript <span class="token keyword">from</span> <span class="token string">"highlight.js/lib/languages/javascript"</span><span class="token punctuation">;</span>
 
     hljs<span class="token punctuation">.</span><span class="token function">registerLanguage</span><span class="token punctuation">(</span><span class="token string">"javascript"</span><span class="token punctuation">,</span> javascript<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token comment">// `highlight` takes the input code and returns the highlighted HTML markup</span>
+    <span class="token comment">// \`highlight\` takes the input code and returns the highlighted HTML markup</span>
     <span class="token keyword">const</span> <span class="token function-variable function">highlight</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">code<span class="token punctuation">,</span> syntax</span><span class="token punctuation">)</span> <span class="token operator">=></span>
         hljs<span class="token punctuation">.</span><span class="token function">highlight</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> <span class="token punctuation">{</span>
             language<span class="token operator">:</span> syntax<span class="token punctuation">,</span>
@@ -117,14 +49,14 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span>CodeJar<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@novacbn/svelte-codejar"</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">console.log("Hello World!");</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">console.log("Hello World!");</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
 <span class="token comment">&lt;!--
-    Now we pass `CodeJar` our syntax highlighting functions along with the
+    Now we pass \`CodeJar\` our syntax highlighting functions along with the
     language syntax used for highlighting
 
-    We also need to pass the `hljs` class so highlight.js knows which element
+    We also need to pass the \`hljs\` class so highlight.js knows which element
     to style
 --></span>
 
@@ -143,13 +75,13 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">import</span> <span class="token punctuation">{</span>CodeJar<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@novacbn/svelte-codejar"</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">console.log("Hello World!");</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">console.log("Hello World!");</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CodeJar</span> <span class="token attr-name">syntax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript<span class="token punctuation">"</span></span> <span class="token attr-name">{highlight}</span> <span class="token attr-name">{value}</span> <span class="token punctuation">/></span></span>
 </code></pre>
 <h2>FAQ</h2>
-<h3>SvelteKit — <code>ReferenceError: window is not defined</code></h3>
+<h3>SvelteKit \u2014 <code>ReferenceError: window is not defined</code></h3>
 <p>When using the library with <a href="https://kit.svelte.dev">SvelteKit</a> with SSR (serverside rendering) enabled you might get this error:</p>
 <pre><code>[vite] Error when evaluating SSR module /node_modules/codejar/codejar.js?v=4f67a3d5:
 ReferenceError: window is not defined
@@ -160,7 +92,7 @@ ReferenceError: window is not defined
 
     <span class="token keyword">export</span> <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
 
-    <span class="token comment">// **NOTE:** Since `onMount` is only called on the client, we can just</span>
+    <span class="token comment">// **NOTE:** Since \`onMount\` is only called on the client, we can just</span>
     <span class="token comment">// make our import there. And assign to our Component's scope</span>
     <span class="token keyword">let</span> CodeJar<span class="token punctuation">;</span>
     <span class="token function">onMount</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -172,7 +104,7 @@ ReferenceError: window is not defined
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>CodeJar</span> <span class="token attr-name"><span class="token namespace">bind:</span>value</span> <span class="token punctuation">/></span></span>
 {:else}
 <span class="token comment">&lt;!--
-    **NOTE:** Normally the `CodeJar` Svelte handles fall through for us, and
+    **NOTE:** Normally the \`CodeJar\` Svelte handles fall through for us, and
     renders / syntax highlights without an editor during SSR / non-JS enabled clients
 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">></span></span>{value}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
@@ -216,7 +148,7 @@ ReferenceError: window is not defined
 <tr>
 <td>tab</td>
 <td><code>string</code></td>
-<td><code>\t</code></td>
+<td><code>\\t</code></td>
 <td>Sets the characters inserted whenever the end-user pressed the tab key</td>
 </tr>
 <tr>
@@ -277,12 +209,4 @@ ReferenceError: window is not defined
 </ul>
 </li>
 </ul>
-<!-- HTML_TAG_END -->
-</div>
-
-
-
-			
-		
-    </body>
-</html>
+`;function S(e){let s,a;return{c(){s=new m,a=p(),this.h()},l(n){s=v(n),a=p(),this.h()},h(){s.a=a},m(n,t){s.m(j,n,t),f(n,a,t)},p:y,d(n){n&&w(a),n&&s.d()}}}function x(e){let s,a;return s=new b({props:{$$slots:{default:[S]},$$scope:{ctx:e}}}),{c(){u(s.$$.fragment)},l(n){r(s.$$.fragment,n)},m(n,t){d(s,n,t),a=!0},p(n,[t]){const o={};t&1&&(o.$$scope={dirty:t,ctx:n}),s.$set(o)},i(n){a||(k(s.$$.fragment,n),a=!0)},o(n){h(s.$$.fragment,n),a=!1},d(n){g(s,n)}}}class $ extends c{constructor(s){super();l(this,s,null,x,i,{})}}export{$ as default};
