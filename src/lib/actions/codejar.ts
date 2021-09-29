@@ -22,22 +22,15 @@ export interface ICodeJarOptions extends Partial<IOptions> {
 }
 
 export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJarAction {
-    let {
-        highlight,
-        onUpdate,
-        syntax,
-        value,
-        withLineNumbers = false,
-        ...extended_options
-    } = options;
+    let {highlight, onUpdate, syntax, value, withLineNumbers = false, ...extendedOptions} = options;
 
-    let jar = CodeJar(element, wrap_highlight(highlight), extended_options);
+    let jar = CodeJar(element, wrapHighlight(highlight), extendedOptions);
 
     function destroy() {
         jar.destroy();
 
-        const wrap = element.parentElement as HTMLDivElement;
-        if (wrap.classList.contains("codejar-wrap")) {
+        const wrap = element.parentElement as HTMLDivElement | null;
+        if (wrap && wrap.classList.contains("codejar-wrap")) {
             const parent = wrap.parentElement as HTMLElement;
             element.style.padding = "";
 
@@ -46,11 +39,11 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
         }
     }
 
-    function on_input(event: Event): void {
+    function onInput(event: Event): void {
         if (onUpdate) onUpdate(jar.toString());
     }
 
-    function wrap_highlight(highlight?: IHighlightCode): IHighlightElement {
+    function wrapHighlight(highlight?: IHighlightCode): IHighlightElement {
         const _highlight = highlight
             ? (element: HTMLElement) => {
                   element.innerHTML = highlight(element.textContent ?? "", syntax);
@@ -60,30 +53,30 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
         return withLineNumbers ? _withLineNumbers(_highlight) : _highlight;
     }
 
-    element.addEventListener("input", on_input);
+    element.addEventListener("input", onInput);
     return {
         destroy() {
             destroy();
-            element.removeEventListener("input", on_input);
+            element.removeEventListener("input", onInput);
         },
 
-        update(new_options) {
+        update(newOptions) {
             ({
                 highlight,
-                on_update: onUpdate,
+                onUpdate,
                 syntax,
                 value,
                 withLineNumbers = false,
-                ...extended_options
-            } = new_options);
+                ...extendedOptions
+            } = newOptions);
 
             if (options.highlight !== highlight || options.withLineNumbers !== withLineNumbers) {
                 destroy();
-                jar = CodeJar(element, wrap_highlight(highlight), options);
-            } else jar.updateOptions(extended_options);
+                jar = CodeJar(element, wrapHighlight(highlight), options);
+            } else jar.updateOptions(extendedOptions);
 
             if (value !== jar.toString()) jar.updateCode(value);
-            options = {highlight, value, withLineNumbers, ...extended_options};
+            options = {highlight, value, withLineNumbers, ...extendedOptions};
         },
     };
 }
