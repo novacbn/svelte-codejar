@@ -14,7 +14,7 @@ See a demo at [novacbn.github.io/svelte-codejar/demo](https://novacbn.github.io/
 <script>
     import {CodeJar} from "@novacbn/svelte-codejar";
 
-    export let value = `console.log("Hello World!");`;
+    let value = `console.log("Hello World!");`;
 </script>
 
 <!--
@@ -156,6 +156,12 @@ npm install @novacbn/svelte-codejar
 | value      | `string`                                    | `""`        | Sets the current text of the Editor                                                                                  |
 | class      | `string`                                    | `""`        | Applies `class=""` to the `<pre>` container element                                                                  |
 | style      | `string`                                    | `undefined` | Applies `style=""` to the `<pre>` container element                                                                  |
+
+### Events
+
+| Name     | Typing                         | Description                                   |
+| -------- | ------------------------------ | --------------------------------------------- |
+| `change` | `CustomEvent<{value: string}>` | Fires whenever the end-user changes the input |
 
 ### API
 
