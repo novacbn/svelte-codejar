@@ -1,8 +1,12 @@
 <script context="module">
     import hljs from "highlight.js/lib/core.js";
+    import css from "highlight.js/lib/languages/css.js";
+    import javascript from "highlight.js/lib/languages/javascript.js";
     import xml from "highlight.js/lib/languages/xml.js";
 
+    hljs.registerLanguage("css", css);
     hljs.registerLanguage("html", xml);
+    hljs.registerLanguage("javascript", javascript);
 
     const highlight = (code, syntax) =>
         hljs.highlight(code, {
