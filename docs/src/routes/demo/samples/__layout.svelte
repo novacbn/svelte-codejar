@@ -13,15 +13,17 @@
     const options = writable({});
     setContext("options", options);
 
-    onMount(async () => {
-        window.addEventListener("message", (event) => {
-            $options = event.data;
-        });
+    function on_message(event) {
+        $options = event.data;
+    }
 
+    onMount(async () => {
         window.parent.postMessage(null);
         $store = (await import("@novacbn/svelte-codejar")).CodeJar;
     });
 </script>
+
+<svelte:window on:message={on_message} />
 
 {#if $store}
     <slot />

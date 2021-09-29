@@ -14,8 +14,8 @@
         "preview:application": "svelte-kit preview --host 0.0.0.0"
     },
     "devDependencies": {
-        "@sveltejs/adapter-static": "^1.0.0-next.17",
-        "@sveltejs/kit": "^1.0.0-next.156",
+        "@sveltejs/adapter-static": "^1.0.0-next.20",
+        "@sveltejs/kit": "^1.0.0-next.177",
         "markdown-it": "^12.2.0",
         "markdown-it-prism": "^2.2.0",
         "vite-plugin-markdown": "^2.0.2"
@@ -25,6 +25,7 @@
         "chota": "^0.8.0",
         "highlight.js": "^10.7.3",
         "prismjs": "^1.23.0",
+        "shiki": "^0.9.11",
         "svelte": "^3.42.3"
     }
 }

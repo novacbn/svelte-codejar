@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.1 - 2021/09/29
+
+-   Fixed `TypeError: wrap is null` exception.
+-   Fixed `<CodeJar bind:value>` not being replicated.
+
 ## v0.1.0 - 2021/08/24
 
 -   Refactored into TypeScript, providing typing support.

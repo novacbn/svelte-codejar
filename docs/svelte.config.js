@@ -10,8 +10,7 @@ export default {
         target: "body",
 
         paths: {
-            // assets: "/svelte-codejar",
-            // base: "/svelte-codejar",
+            base: process.env.NODE_ENV === "production" ? "/svelte-codejar" : "",
         },
 
         /** @type {import('vite').UserConfig} */
