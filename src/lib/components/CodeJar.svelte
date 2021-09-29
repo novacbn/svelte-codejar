@@ -41,8 +41,9 @@
     export let syntax: $$Props["syntax"] = undefined;
     export let value: $$Props["value"] = "";
 
-    function on_update(value: string): void {
-        dispatch("change", {value});
+    function onUpdate(new_value: string): void {
+        value = new_value;
+        dispatch("change", {value: new_value});
     }
 </script>
 
@@ -57,11 +58,11 @@
         highlight,
         history,
         indentOn,
-        onUpdate: on_update,
+        onUpdate,
         preserveIdent,
         spellcheck,
         syntax,
         tab,
         value,
         withLineNumbers
-    }}><code class={syntax ? `language-${syntax}` : ''}>{@html highlight ? highlight(value, syntax) : value}</code></pre>
+    }}><code class={syntax ? `language-${syntax}` : ''}>{#if highlight}{@html highlight(value, syntax)}{:else}{value}{/if}</code></pre>
