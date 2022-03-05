@@ -1,6 +1,6 @@
 {
     "name": "@novacbn/svelte-codejar",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Svelte Binding for the embeddable code editor CodeJar",
     "author": "novacbn",
     "license": "MIT",
