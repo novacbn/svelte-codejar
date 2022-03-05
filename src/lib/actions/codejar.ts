@@ -22,7 +22,7 @@ export interface ICodeJarOptions extends Partial<IOptions> {
 }
 
 export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJarAction {
-    let {highlight, onUpdate, syntax, value, withLineNumbers = false, ...extendedOptions} = options;
+    let {highlight, onUpdate, syntax, value, withLineNumbers, ...extendedOptions} = options;
 
     let jar = CodeJar(element, wrapHighlight(highlight), extendedOptions);
 
@@ -66,7 +66,7 @@ export function codejar(element: HTMLElement, options: ICodeJarOptions): ICodeJa
                 onUpdate,
                 syntax,
                 value,
-                withLineNumbers = false,
+                withLineNumbers,
                 ...extendedOptions
             } = newOptions);
 

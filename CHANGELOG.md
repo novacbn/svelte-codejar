@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.2 - 2022/03/05
+
+-   Fixed cursor reset on first keystroke.
+-   Upgraded SvelteKit to `next.292`.
+
 ## v0.1.1 - 2021/09/29
 
 -   Fixed `TypeError: wrap is null` exception.

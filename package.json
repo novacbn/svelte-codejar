@@ -29,6 +29,7 @@
         "url": "https://github.com/novacbn/svelte-codejar"
     },
     "scripts": {
+        "dev": "svelte-kit dev --host 0.0.0.0",
         "format": "prettier --config .prettierrc --write ./",
         "lint": "npm run lint:format",
         "lint:format": "prettier --config .prettierrc --check ./",
@@ -46,9 +47,11 @@
         "svelte": "^3.42.3"
     },
     "devDependencies": {
-        "@sveltejs/kit": "^1.0.0-next.156",
+        "@sveltejs/kit": "^1.0.0-next.292",
         "@tsconfig/svelte": "^2.0.1",
+        "@types/prismjs": "^1.26.0",
         "prettier": "^2.1.2",
+        "prismjs": "^1.27.0",
         "svelte-check": "^2.2.5",
         "svelte-preprocess": "^4.8.0",
         "svelte2tsx": "^0.4.5",
